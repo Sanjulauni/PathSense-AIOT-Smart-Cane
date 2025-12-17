@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "PathSense_app"
+rootProject.name = "Smart_cane"
 include(":app")
+ 
