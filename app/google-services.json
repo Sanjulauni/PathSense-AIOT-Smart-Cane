@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1067582128128",
+    "project_id": "smart-cane-5",
+    "storage_bucket": "smart-cane-5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067582128128:android:62721f2fd33b0dadaed8e5",
+        "android_client_info": {
+          "package_name": "com.example.smart_cane"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOpK3YS0aIaa_swKFjO9TWm0mWDQOO7WE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
