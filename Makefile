@@ -1,24 +1,34 @@
-# Makefile
-# Ensure NOTICE and LICENSE are included in any distribution package.
-# Add or merge these targets into your project's existing Makefile if one exists.
+# SmartWhiteCane build helpers (needs arduino-cli with the esp32 core installed)
+#
+#   make firmware                       build both boards
+#   make upload-cane   PORT=COM5        flash the ESP32-S3 cane controller
+#   make upload-vision PORT=COM6        flash the ESP32-CAM vision node
+#   make app                            build the Android debug APK
 
-.PHONY: notice license all build
+ARDUINO_CLI ?= arduino-cli
+PORT        ?=
+CANE_FQBN   ?= esp32:esp32:esp32s3
+VISION_FQBN ?= esp32:esp32:esp32cam:PartitionScheme=huge_app
+BUILD_DIR   ?= build
 
-# Ensure NOTICE is present in distribution package
-notice:
-	@echo "Installing NOTICE file into dist/"
-	mkdir -p dist
-	cp NOTICE dist/ || true
+.PHONY: firmware cane vision upload-cane upload-vision app clean
 
-# Ensure LICENSE is present in distribution package
-license:
-	@echo "Installing LICENSE file into dist/"
-	mkdir -p dist
-	cp LICENSE dist/ || true
+firmware: cane vision
 
-# Example: include notice/license when building distribution
-all: build notice license
+cane:
+	$(ARDUINO_CLI) compile -b $(CANE_FQBN) --build-path $(BUILD_DIR)/cane firmware/cane_controller
 
-# Placeholder build target; replace with actual build steps for the project
-build:
-	@echo "No build rule defined. Replace this with your project build steps (e.g., mvn package, gradle build, etc.)."
+vision:
+	$(ARDUINO_CLI) compile -b $(VISION_FQBN) --build-path $(BUILD_DIR)/vision firmware/vision_node
+
+upload-cane: cane
+	$(ARDUINO_CLI) upload -b $(CANE_FQBN) -p $(PORT) --input-dir $(BUILD_DIR)/cane firmware/cane_controller
+
+upload-vision: vision
+	$(ARDUINO_CLI) upload -b $(VISION_FQBN) -p $(PORT) --input-dir $(BUILD_DIR)/vision firmware/vision_node
+
+app:
+	cd android && ./gradlew assembleDebug
+
+clean:
+	rm -rf $(BUILD_DIR)

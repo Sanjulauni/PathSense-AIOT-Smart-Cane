@@ -1,12 +1,25 @@
-Copyright 2026 Navod2022s
+SmartWhiteCane
+Copyright 2026 Navod2022s and the SmartWhiteCane contributors
 
-This product includes software developed by Navod2022s and third-party contributors.
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
 
-Third-party attributions
-- ExampleLibrary (https://example.com) — MIT License
-- AnotherLib (https://another.example.com) — Apache-2.0
+This product includes or builds against the following third-party software:
 
-If you are using third-party components in this project, replace the above entries with the actual component names, URLs, and licenses.
+- Edge Impulse Arduino example code (camera capture and inference in
+  firmware/vision_node/vision_node.ino)
+  Copyright (c) 2022 EdgeImpulse Inc. MIT License.
+  https://github.com/edgeimpulse
 
-License
-This project is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for details.
+- Edge Impulse SDK and TensorFlow Lite for Microcontrollers (shipped inside
+  the exported track_detector_inferencing Arduino library)
+  Apache License 2.0.
+
+- Espressif esp32-camera driver and Arduino core for ESP32
+  https://github.com/espressif/esp32-camera   Apache License 2.0
+  https://github.com/espressif/arduino-esp32  LGPL-2.1
+
+- AndroidX, Material Components for Android
+  Apache License 2.0.
+
+- Firebase Authentication, Google Maps SDK and Location services for Android
+  Used under the Google APIs Terms of Service.

@@ -1,0 +1,19 @@
+# Firmware credentials (copy secrets.example.h to secrets.h)
+firmware/**/secrets.h
+
+# Arduino / PlatformIO build output
+build/
+*.bin
+*.elf
+*.map
+.pio/
+
+# Android: Firebase config holds project keys; add your own locally
+android/app/google-services.json
+
+# Editors and OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
